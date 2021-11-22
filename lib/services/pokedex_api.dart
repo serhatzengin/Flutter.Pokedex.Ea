@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_pokedex_ea/pokemon_model.dart';
+import 'package:flutter_pokedex_ea/model/pokemon_model.dart';
 
 class PokeApi {
   static const String _url =
