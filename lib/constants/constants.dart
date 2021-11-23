@@ -19,7 +19,7 @@ class Constans {
     return TextStyle(
         color: Colors.white,
         fontWeight: FontWeight.bold,
-        fontSize: _calculateFonstSize(22));
+        fontSize: _calculateFonstSize(24));
   }
 
   static TextStyle getTypeChipTextStyle() {
