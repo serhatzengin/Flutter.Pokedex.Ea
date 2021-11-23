@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_pokedex_ea/constants/constants.dart';
 import 'package:flutter_pokedex_ea/model/pokemon_model.dart';
 import 'package:flutter_pokedex_ea/services/pokedex_api.dart';
 import 'package:flutter_pokedex_ea/widget/pokelist_item.dart';
@@ -52,7 +53,10 @@ class _PokemonListState extends State<PokemonList> {
           } else if (snapshot.hasError) {
             return const Text("veri gelmedi");
           } else {
-            return const CircularProgressIndicator();
+            return Center(
+              child: Text("Data is Loading...",
+                  style: Constans.getPokemonNameTextStyle()),
+            );
           }
         },
       ),
