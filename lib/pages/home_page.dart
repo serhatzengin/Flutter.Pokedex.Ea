@@ -19,6 +19,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: OrientationBuilder(
+        //orientation değiştiği zaman cihazın bundan haberdar olmasını sağlar
         builder: (BuildContext context, Orientation orientation) {
           return Column(
             children: [

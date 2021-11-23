@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Constans {
   Constans._();
@@ -8,16 +9,30 @@ class Constans {
   static const String title = "Pokedex";
 
   static TextStyle getTitleTextStyle() {
-    return const TextStyle(
-        color: Colors.white, fontWeight: FontWeight.bold, fontSize: 48);
+    return TextStyle(
+        color: Colors.white,
+        fontWeight: FontWeight.bold,
+        fontSize: _calculateFonstSize(48));
   }
 
   static TextStyle getPokemonNameTextStyle() {
-    return const TextStyle(
-        color: Colors.white, fontWeight: FontWeight.bold, fontSize: 30);
+    return TextStyle(
+        color: Colors.white,
+        fontWeight: FontWeight.bold,
+        fontSize: _calculateFonstSize(30));
   }
 
   static TextStyle getTypeChipTextStyle() {
-    return const TextStyle(color: Colors.white, fontSize: 20);
+    return TextStyle(
+      color: Colors.white,
+      fontSize: _calculateFonstSize(20),
+    );
   }
+
+  static _calculateFonstSize(int size) {
+    return ScreenUtil().orientation == Orientation.portrait
+        ? size.sp
+        : (size * 1.5).sp;
+  }
+  //telefonda kulalnılan font boyutuna göre hesaplama yapılıyor
 }
