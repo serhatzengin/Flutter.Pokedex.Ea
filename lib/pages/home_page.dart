@@ -18,11 +18,15 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: const [
-          AppTitle(),
-          PokemonList(),
-        ],
+      body: OrientationBuilder(
+        builder: (BuildContext context, Orientation orientation) {
+          return Column(
+            children: [
+              AppTitle(),
+              PokemonList(),
+            ],
+          );
+        },
       ),
     );
   }

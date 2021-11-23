@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_pokedex_ea/model/pokemon_model.dart';
 import 'package:flutter_pokedex_ea/services/pokedex_api.dart';
+import 'package:flutter_pokedex_ea/widget/pokelist_item.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PokemonList extends StatefulWidget {
   const PokemonList({Key? key}) : super(key: key);
@@ -27,16 +29,26 @@ class _PokemonListState extends State<PokemonList> {
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.hasData) {
             List<PokemonModel> _myList = snapshot.data!;
-            return ListView.builder(
+            return GridView.builder(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount:
+                    ScreenUtil().orientation == Orientation.portrait ? 2 : 3,
+              ),
               itemCount: _myList.length,
               itemBuilder: (BuildContext context, int index) {
-                var currentPokeomon = _myList[index];
-
-                return ListTile(
-                  title: Text(currentPokeomon.name.toString()),
-                );
+                return PokeListItem(pokemon: _myList[index]);
               },
             );
+
+            //  ListView.builder(
+            //   itemCount: _myList.length,
+            //   itemBuilder: (BuildContext context, int index) {
+            //     var currentPokeomon = _myList[index];
+
+            //     return PokeListItem(pokemon: currentPokeomon);
+            //   },
+            // );
+
           } else if (snapshot.hasError) {
             return const Text("veri gelmedi");
           } else {
