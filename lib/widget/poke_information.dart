@@ -40,7 +40,7 @@ class PokeInformation extends StatelessWidget {
         if (value is List && value.isNotEmpty)
           Text(value.join(' ,'), style: Constans.getPokeInfoTextStyle())
         else if (value == null)
-          Text('Not acailable', style: Constans.getPokeInfoTextStyle())
+          Text('Not available', style: Constans.getPokeInfoTextStyle())
         else
           Text(value.toString(), style: Constans.getPokeInfoTextStyle())
       ],

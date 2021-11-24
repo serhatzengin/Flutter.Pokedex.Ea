@@ -52,10 +52,13 @@ class DetailPage extends StatelessWidget {
                 right: 0,
                 child: PokeInformation(pokemon: pokemon),
               ),
-              // CachedNetworkImage(
-              //     imageUrl: pokemon.img ?? '',
-              //     height: 0.25.sh,
-              //     fit: BoxFit.fitHeight)
+              Align(
+                alignment: Alignment.topCenter,
+                child: CachedNetworkImage(
+                    imageUrl: pokemon.img ?? '',
+                    height: 0.25.sh,
+                    fit: BoxFit.fitHeight),
+              )
               //todo burada sorun var
             ],
           ))
