@@ -25,7 +25,7 @@ class _PokemonListState extends State<PokemonList> {
   Widget build(BuildContext context) {
     return Expanded(
       child: FutureBuilder<List<PokemonModel>>(
-        future: _pokemonListFuture,
+       future: _pokemonListFuture, 
         // initialData: InitialData,
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.hasData) {

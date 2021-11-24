@@ -34,5 +34,17 @@ class Constans {
         ? size.sp
         : (size * 1.5).sp;
   }
+
   //telefonda kulalnılan font boyutuna göre hesaplama yapılıyor
+
+  static getPokeInfoLabelTextStyle() {
+    return TextStyle(
+        fontSize: _calculateFonstSize(20),
+        color: Colors.black,
+        fontWeight: FontWeight.bold);
+  }
+
+  static getPokeInfoTextStyle() {
+    return TextStyle(fontSize: _calculateFonstSize(16), color: Colors.black);
+  }
 }
