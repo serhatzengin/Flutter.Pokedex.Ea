@@ -14,6 +14,63 @@ class DetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     String pokeballImageUrl = 'images/pokeball.png';
 
+    return ScreenUtil().orientation == Orientation.portrait
+        ? _builtPortraitBody(context, pokeballImageUrl)
+        : builtLandScapeBody(context, pokeballImageUrl);
+  }
+
+  Scaffold builtLandScapeBody(BuildContext context, String pokeballImageUrl) {
+    return Scaffold(
+      backgroundColor: UIHelper.getColorFromType(pokemon.type![0]),
+      body: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: UIHelper.getDefaultPadding(),
+              child: IconButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  iconSize: 18.w,
+                  //kısa kenara göre oranlamasını söyledik
+                  icon: const Icon(Icons.arrow_back_ios)),
+            ),
+            Expanded(
+                child: Row(
+              children: [
+                Expanded(
+                  flex: 2,
+                  child: Column(
+                    children: [
+                      PokeNameType(pokemon: pokemon),
+                      Expanded(
+                        child: Hero(
+                          tag: pokemon.id!,
+                          child: CachedNetworkImage(
+                              imageUrl: pokemon.img ?? '',
+                              height: 0.25.sw,
+                              fit: BoxFit.fitHeight),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Expanded(
+                    flex: 3,
+                    child: Padding(
+                      padding: UIHelper.getDefaultPadding(),
+                      child: PokeInformation(pokemon: pokemon),
+                    )),
+              ],
+            ))
+          ],
+        ),
+      ),
+    );
+  }
+
+  Scaffold _builtPortraitBody(BuildContext context, String pokeballImageUrl) {
     return Scaffold(
       backgroundColor: UIHelper.getColorFromType(pokemon.type![0]),
       body: SafeArea(
@@ -54,12 +111,14 @@ class DetailPage extends StatelessWidget {
               ),
               Align(
                 alignment: Alignment.topCenter,
-                child: CachedNetworkImage(
-                    imageUrl: pokemon.img ?? '',
-                    height: 0.25.sh,
-                    fit: BoxFit.fitHeight),
+                child: Hero(
+                  tag: pokemon.id!,
+                  child: CachedNetworkImage(
+                      imageUrl: pokemon.img ?? '',
+                      height: 0.25.sh,
+                      fit: BoxFit.fitHeight),
+                ),
               )
-              //todo burada sorun var
             ],
           ))
         ],
