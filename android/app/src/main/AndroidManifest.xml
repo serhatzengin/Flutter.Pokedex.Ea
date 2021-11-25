@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.flutter_pokedex_ea">
    <application
-        android:label="flutter_pokedex_ea"
+        android:label="PokeDex"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
